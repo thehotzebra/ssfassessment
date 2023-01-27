@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body data-th-object="${order}">
+    <h1>Delivery Details</h1>
+        <h1>Your contact information</h1>
+        
+        Order id: <p data-th-text="*{order id}"></p>
+        <br>
+        Your order will be delivered to <p data-th-text="*{address}"></p>
+        <br>
+        Pizza cost:<p data-th-text="*{pizza cost}"></p>
+        <br>
+        Rush <p data-th-text="*{rush fee}"></p>
+        <br>
+        Total cost: <p data-th-text="*{dateOfBirth}"></p>
+        <br>
+</body>
+</html>
