@@ -3,28 +3,31 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Panucci's Pizza</title>
+		<title>Welcome to Panucci's Pizza</title>
 		<link rel="stylesheet" href="/styles.css">
+		<style>
+			.error {
+			  color: red;
+			}
+		  </style>
 	</head>
 	<body>
 
 <div class="title">
 	<div><img src="/images/logo.jpg" class="thumbnail" width="350" height="250"></div>
-	<h2>Panucci's Pizza</h2>
+	<h2>Welcome to Panucci's Pizza</h2>
 </div>
-
-<form>
 <div>
-<h2>Select a pizza</h2>
+<h3>Select a pizza:</h3>
 <table>
 	<tr>
 	<td>
-	<form action="#" data-th-action="@{/pizza}" method="get">
-	<div>
+	<form action="#" data-th-action="@{/pizza}" data-th-object="${order}" method="post">
+		<div>
 		<img src="/images/Bella.png" class="pizza">
 	</div>
 	<div>
-		<input type="radio" name="pizza" value="bella" required> Bella
+		<input type="radio" data-th-field="${order.pizza}" value="bella" required> Bella
 	</div>
 	</td>
 	<td>
@@ -32,7 +35,7 @@
 		<img src="/images/Margherita.png" class="pizza">
 	</div>
 	<div>
-		<input type="radio" name="pizza" value="margherita"> Margherita
+		<input type="radio" data-th-field="${order.pizza}" value="margherita"> Margherita
 	</div>
 	</td>
 	<td>
@@ -40,7 +43,7 @@
 		<img src="/images/Marinara.png" class="pizza">
 	</div>
 	<div>
-		<input type="radio" name="pizza" value="marinara"> Marinara
+		<input type="radio" data-th-field="${order.pizza}" value="marinara"> Marinara
 	</div>
 	</td>
 	<td>
@@ -48,7 +51,7 @@
 		<img src="/images/SpianataCalabrese.png" class="pizza">
 	</div>
 	<div>
-		<input type="radio" name="pizza" value="spianatacalabrese"> Spianata Calabrese
+		<input type="radio" data-th-field="${order.pizza}" value="spianatacalabrese"> Spianata Calabrese
 	</div>
 	</td>
 	<td>
@@ -56,34 +59,36 @@
 		<img src="/images/TrioFormaggio.png" class="pizza">
 	</div>
 	<div>
-		<input type="radio" name="pizza" value="trioformaggio"> Trio Formaggio
+		<input type="radio" data-th-field="${order.pizza}" value="trioformaggio"> Trio Formaggio<br>
+		
 	</div>
+		
 	</td>
 	</tr>
 	<tr>
 	<td>Size:</td>
 	<td>
-	<select name="size" >
+	<select data-th-field="${order.size}">
 		<option value="sm">Small</option>
 		<option value="md">Medium</option>
 		<option value="lg">Large</option>
 	</select>
+	<span data-th-if="${#fields.hasErrors('order.size')}" data-th-errors="${order.size}"></span>
 	</td>
 	</tr>
 <tr>
 	<td>Quantity:</td>
 	<td>
 	<input type="number" min="1" max="10" name="quantity" required>
-	added max="10" -->
+	<!-- added max="10" -->
 	</td>
 </tr>
 <tr>
 	<td></td>
-	<td>
-		<button type="submit">Next</button>
+	<td>	
+		<button type="submit" value="submit">Next</button>
 	</td>
 	</tr>
-	</form>
 </table>
 </div>
 </form>

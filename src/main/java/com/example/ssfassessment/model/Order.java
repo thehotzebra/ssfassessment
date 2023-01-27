@@ -1,5 +1,6 @@
 package com.example.ssfassessment.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import jakarta.validation.constraints.NotNull;
@@ -11,8 +12,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Order {
-    
+public class Order implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String orderId;
 
     @NotNull(message = "Name cannot be null.")
@@ -27,12 +29,9 @@ public class Order {
     private String phone;
     private boolean rush;
     private String comments;
-    private String pizza;
-    private String size;
-
-    @NotNull(message = "Minimum order of 1 pizza. Maximum order of 10.")
-    @Size(min = 1, max = 10)
-    private Number quantity;
+    public String pizza;
+    public String size;
+    public Number quantity;
     private Number total;
 
     public Order() {
